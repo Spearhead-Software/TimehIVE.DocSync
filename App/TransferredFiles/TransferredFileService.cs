@@ -16,18 +16,34 @@ namespace App.TransferredFiles
 
             await transferredFileRepo.AddAsync(transferredFile.Value);
 
-            //await savechanges 
+            await transferredFileRepo.CommitChangesAsync();
+
+            return transferredFile;
 
         }
 
-        public Task<ErrorOr<TransferredFile>> GetAsync(Guid transferredFileId)
+        public async Task<ErrorOr<TransferredFile>> GetAsync(Guid transferredFileId)
         {
-            throw new NotImplementedException();
+            TransferredFile? transferredFile = await transferredFileRepo.GetByIdAsync(transferredFileId);
+            if(transferredFile is null)
+            {
+                return Error.NotFound("Transferred File not found");
+            }
+
+            return transferredFile;
         }
 
-        public Task<ErrorOr<List<TransferredFile>>> GetListAsync()
+        public async Task<ErrorOr<List<TransferredFile>>> GetListAsync()
         {
-            throw new NotImplementedException();
+            List<TransferredFile>? transferredFiles = await transferredFileRepo.GetListAsync();
+            
+            //not an exception when there are none found, filters being added soon
+            if(transferredFiles is null)
+            {
+                return new List<TransferredFile>();
+            }
+
+            return transferredFiles;
         }
 
     }

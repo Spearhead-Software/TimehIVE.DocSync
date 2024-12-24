@@ -1,8 +1,9 @@
-﻿using Domain.TransferredFiles;
+﻿using App.Common;
+using Domain.TransferredFiles;
 
 namespace App.TransferredFiles
 {
-    public interface ITransferredFileRepo
+    public interface ITransferredFileRepo : IRepoBase
     {
         Task AddAsync(TransferredFile file);
 

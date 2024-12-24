@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace API.Common
 {
+    [ApiController]
     public class ApiController : ControllerBase
     {
 

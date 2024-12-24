@@ -1,13 +1,19 @@
 ﻿using App.TransferredFiles;
 using Domain.TransferredFiles;
+using Infra.Common;
 using Infra.Common.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.TransferredFiles
 {
-    public class TransferredFilesRepo(AppDBContext dbContext) : ITransferredFileRepo
+    public class TransferredFilesRepo : RepoBase, ITransferredFileRepo
     {
-        private readonly AppDBContext _db = dbContext;
+        private readonly AppDBContext _db;
+
+        public TransferredFilesRepo(AppDBContext dbContext) : base(dbContext)
+        {
+            _db = dbContext;
+        }
 
         public async Task AddAsync(TransferredFile file)
         {
