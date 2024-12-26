@@ -1,4 +1,5 @@
 ﻿namespace API.TransferredFiles
 {
-    public record TransferredFileRepsone(Guid Id, string HHAXDocId, string FileName);
+    public record TransferredFileResponse(Guid Id, string HHAXDocId, string FileName);
+    public record TransferredFilesResponse(List<TransferredFileResponse> files);
 }
