@@ -1,5 +1,8 @@
 using App.TransferredFiles;
+using Infra.Common.Persistence;
 using Infra.TransferredFiles;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +15,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ITransferredFileRepo, TransferredFilesRepo>();
 builder.Services.AddScoped<ITransferredFileService, TransferredFileService>();
+DatabaseSettings dbSettings = builder.Configuration.GetSection("DatabaseSettings").Get<DatabaseSettings>()!;
 
+
+NpgsqlConnectionStringBuilder dbBuilder = new NpgsqlConnectionStringBuilder()
+{
+    Host = dbSettings.Host,
+    Port = dbSettings.Port,
+    Username = dbSettings.Username,
+    Password = dbSettings.Password,
+    Database = dbSettings.Database,
+};
+
+builder.Services.AddDbContext<AppDBContext>(options =>
+{
+    options.UseNpgsql(dbBuilder.ConnectionString).UseSnakeCaseNamingConvention();
+});
 
 var app = builder.Build();
 

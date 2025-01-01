@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "App\App.csproj", "{4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{AE49F10E-91AE-4B8A-A07E-737004397674}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{DD0C9BA4-865D-438C-9BC6-C52CB14996C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{DD0C9BA4-865D-438C-9BC6-C52CB14996C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{A8FC4B4F-595B-4106-A47B-8BD9E2D2A952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Library\Library.csproj", "{A8FC4B4F-595B-4106-A47B-8BD9E2D2A952}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
