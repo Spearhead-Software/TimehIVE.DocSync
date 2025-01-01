@@ -1,4 +1,5 @@
 using App.TransferredFiles;
+using Infra.TransferredFiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ITransferredFileRepo, ITransferredFileRepo>();
+builder.Services.AddScoped<ITransferredFileRepo, TransferredFilesRepo>();
 builder.Services.AddScoped<ITransferredFileService, TransferredFileService>();
 
 
